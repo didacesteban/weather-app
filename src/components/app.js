@@ -6,7 +6,6 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-require('../scss/style.scss');
 
 const App = () => (
     <div>

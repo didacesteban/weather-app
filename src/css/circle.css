@@ -853,17 +853,17 @@
 .c100.dark:hover > span {
   color: #c6ff00;
 }
-.c100.green .bar, .c100.green .fill {
-  border-color: #4db53c !important;
+.c100.red .bar, .c100.red .fill {
+  border-color: #bf3737 !important;
 }
-.c100.green:hover > span {
-  color: #4db53c;
+.c100.red:hover > span {
+  color: #bf3737;
 }
-.c100.green.dark .bar, .c100.green.dark .fill {
-  border-color: #5fd400 !important;
+.c100.red.dark .bar, .c100.red.dark .fill {
+  border-color: #bf3737 !important;
 }
-.c100.green.dark:hover > span {
-  color: #5fd400;
+.c100.red.dark:hover > span {
+  color: #bf3737;
 }
 .c100.orange .bar, .c100.orange .fill {
   border-color: #dd9d22 !important;

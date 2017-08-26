@@ -5,7 +5,6 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-require('../scss/style.scss');
 
 const Menu = () => (
   <div>

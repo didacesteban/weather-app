@@ -3,7 +3,8 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import { fetchCountries } from "../actions/countriesActions"
 import {Grid, Row, Col, PageHeader} from 'react-bootstrap'
-import '../scss/circle.css';
+import '../css/circle.css';
+import '../css/style.css';
 
 function mapStateToProps(state) {
     return {
@@ -23,21 +24,21 @@ class Home extends Component {
 
   render() {
     const countriesInfo = this.props.countries.countries;
-    let countryTempreatureChart = "c100 center blue ";
+    let countryTempreatureChart = "c100 center";
     if (!countriesInfo.length) {
       return <button onClick={this.fetchCountries.bind(this)}>load countries info</button>
     }
     const mappedInfo = countriesInfo.map(country =>
       <Col xs={6} md={6} lg={3} key={country.id}>
         <p>{country.name}</p>
-        <div className={countryTempreatureChart + `p${country.temperatureFormated}`}>
+        <div className={countryTempreatureChart + ` p${country.temperatureFormated} ${country.temperatureColor}`}>
             <span>{country.temperature}°</span>
             <div className="slice"><div className="bar"></div><div className="fill"></div></div>
         </div>
       </Col>
     );
 
-    return <Row className="container">
+    return <div className="container">
       <Col xs={12} md={12} lg={12}>
         <PageHeader>
           Dashboard <small>weather updated at: </small>
@@ -46,7 +47,7 @@ class Home extends Component {
           {mappedInfo}
         </Row>
       </Col>
-    </Row>
+    </div>
   }
 
 }
