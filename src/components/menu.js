@@ -9,12 +9,10 @@ import {
 const Menu = () => (
   <div>
     <Grid>
-      <Row>
-        <Col xs={6} md={6} lg={6} className="text-center">
-          <Link to="/">Weather dashboard</Link>
-        </Col>
-        <Col xs={6} md={6} lg={6} className="text-center">
-          <li><Link to="/">All data</Link></li>
+      <Row className="menu-dashboard-weather">
+        <Col xs={12} md={12} lg={12} className="text-left">
+          <Link to="/" className="menu-dashboard-weather-button">DASHBOARD</Link>
+          <Link to="/allData" className="menu-dashboard-weather-button">ALL TIME DATA</Link>
         </Col>
       </Row>
     </Grid>
