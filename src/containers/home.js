@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
+import { addTimeout } from 'redux-timeout'
 import { fetchCountries } from "../actions/countriesActions"
 import {Grid, Row, Col, PageHeader} from 'react-bootstrap'
 import '../css/circle.css';
@@ -16,6 +17,9 @@ class Home extends Component {
 
   componentWillMount() {
     this.props.dispatch(fetchCountries())
+    setTimeout(() => {
+      this.props.dispatch(fetchCountries())
+    }, 180000)
   }
 
   fetchCountries() {
@@ -29,7 +33,7 @@ class Home extends Component {
       return <button onClick={this.fetchCountries.bind(this)}>load countries info</button>
     }
     const mappedInfo = countriesInfo.map(country =>
-      <Col xs={6} md={6} lg={3} key={country.id}>
+      <Col xs={6} md={6} lg={3} key={country.id} className="country-container">
         <p>{country.name}</p>
         <div className={countryTempreatureChart + ` p${country.temperatureFormated} ${country.temperatureColor}`}>
             <span>{country.temperature}°</span>
