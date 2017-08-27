@@ -32,7 +32,11 @@ class Home extends Component {
     const countriesInfo = this.props.countries.countries;
     let countryTempreatureChart = "c100 center";
     if (!countriesInfo.length) {
-      return <button onClick={this.fetchCountries.bind(this)}>load countries info</button>
+      return <Col xs={12} md={12} lg={12} className="text-center">
+      <p>We are trying to get real time weather data but We are having some issues.</p>
+      <p>Please be patient and click the button below to try again.</p>
+      <button className="btn btn-default" onClick={this.fetchCountries.bind(this)}>Retry</button>
+      </Col>
     }
     let lastUpdate = `${countriesInfo[countriesInfo.length-1].date}`;
     const mappedInfo = countriesInfo.map(country =>
