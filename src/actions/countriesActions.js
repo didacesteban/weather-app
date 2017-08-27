@@ -7,7 +7,6 @@ export function fetchCountries() {
     dispatch({type: "FETCH_COUNTRIES"});
     axios.get("http://api.openweathermap.org/data/2.5/group?id=3435910,3871336,3936456,3448439&units=metric&appid=3df887a8ba28b100af8812a5dab78e9b")
       .then((response) => {
-        console.log(JSON.stringify(response));
         const data = _.map(response.data.list, (obj) => {return CountryMapper(obj);});
         dispatch({
           type: "FETCH_COUNTRIES_FULFILLED",
