@@ -3,6 +3,11 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import { fetchCountries, clearData } from "../actions/countriesActions"
 import {Grid, Row, Col, PageHeader} from 'react-bootstrap'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 import '../css/circle.css';
 import '../css/style.css';
 const _ = require('lodash');
@@ -27,14 +32,14 @@ class AllData extends Component {
       dataMapped = _.concat(dataMapped, array);
     });
     if(localStorage.getItem("allData")){
-      dataMapped = dataMapped.map(country => {
-        return <tr key={country.id}>
+      dataMapped = dataMapped.map((country, index) => {
+        return <tr key={index}>
             <td>{country.name}</td>
             <td>{country.temperature}°</td>
           </tr>
       });
     }else{
-      messageNoData = <p className="text-center">"Sorry, You don't have data saved yet"</p>;
+      messageNoData = "Sorry, You don't have data saved yet";
     }
 
     return <div className="container">
@@ -46,7 +51,9 @@ class AllData extends Component {
       <Row>
         { localStorage.getItem("allData") ?
           <Col xs={12} md={12} lg={12} className="text-left">
-            <button className="btn btn-default" onClick={this.clearStorage.bind(this)}>clear data</button>
+            <button className="btn btn-default" onClick={this.clearStorage.bind(this)}>
+              <Link to="/">clear data</Link>
+            </button>
             <table className="table table-striped table-allData-margin">
               <thead>
                 <tr>
@@ -58,8 +65,7 @@ class AllData extends Component {
                 {dataMapped}
               </tbody>
             </table>
-          </Col> : {messageNoData}
-        }
+          </Col> : <p className="text-center">{messageNoData}</p> }
       </Row>
     </div>
   }

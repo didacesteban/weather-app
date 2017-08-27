@@ -20,8 +20,8 @@ class Home extends Component {
 
   componentDidMount() {
     setInterval(() => {
-        
-    }, 500);
+      this.props.dispatch(fetchCountries())
+    }, 180000);
   }
 
   fetchCountries() {
@@ -34,6 +34,7 @@ class Home extends Component {
     if (!countriesInfo.length) {
       return <button onClick={this.fetchCountries.bind(this)}>load countries info</button>
     }
+    let lastUpdate = `${countriesInfo[countriesInfo.length-1].date}`;
     const mappedInfo = countriesInfo.map(country =>
       <Col xs={6} md={6} lg={3} key={country.id} className="country-container">
         <p>{country.name}</p>
@@ -47,7 +48,7 @@ class Home extends Component {
     return <div className="container">
       <Col xs={12} md={12} lg={12}>
         <PageHeader>
-          Dashboard <small>weather updated at: </small>
+          Dashboard <small className="custom-small">Last update: {lastUpdate}</small>
         </PageHeader>
         <Row className="text-center">
           {mappedInfo}

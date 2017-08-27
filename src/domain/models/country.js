@@ -1,11 +1,12 @@
 class Country
 {
-  constructor (id, name, temperature, temperatureFormated, temperatureColor) {
+  constructor (id, name, temperature, temperatureFormated, temperatureColor, date) {
     this.id = id;
     this.name = name;
     this.temperature = temperature;
     this.temperatureFormated = temperatureFormated;
     this.temperatureColor = temperatureColor;
+    this.date = date;
   }
 }
 
@@ -16,7 +17,8 @@ function CountryMapper (json)
     json.name,
     json.main.temp,
     Math.round((json.main.temp * 100)/45),
-    getTemperatureColor(json.main.temp)
+    getTemperatureColor(json.main.temp),
+    new Date ()
   );
 }
 
